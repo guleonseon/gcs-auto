@@ -1,0 +1,39 @@
+V2Ray 4.22.1 (V2Fly, a community-driven edition of V2Ray.) Custom (go1.13.5 linux/amd64)
+A unified platform for anti-censorship.
+panic: runtime error: slice bounds out of range [:12] with capacity 8
+
+goroutine 1 [running]:
+v2ray.com/core/common/uuid.ParseString(0xc000036980, 0x20, 0x0, 0x0, 0x0, 0x7f3db2ecda00)
+	v2ray.com/core/common/uuid/uuid.go:81 +0x395
+v2ray.com/core/proxy/vmess.(*Account).AsAccount(0xc000081140, 0xe3c2c0, 0xc000081140, 0x7f3db2ecda00, 0xc000081140)
+	v2ray.com/core/proxy/vmess/account.go:41 +0x4c
+v2ray.com/core/common/protocol.(*User).GetTypedAccount(0xc000081100, 0xc0000f9718, 0x443b0c, 0x8, 0xb9a3e0)
+	v2ray.com/core/common/protocol/user.go:13 +0x230
+v2ray.com/core/common/protocol.(*User).ToMemoryUser(0xc000081100, 0x1, 0x1, 0xc00000e318)
+	v2ray.com/core/common/protocol/user.go:22 +0x2f
+v2ray.com/core/common/protocol.NewServerSpecFromPB(0xc000152180, 0x9680, 0xc00000e308, 0x1, 0x1, 0x0, 0x0, 0x0, 0x0, 0x13a3788, ...)
+	v2ray.com/core/common/protocol/server_spec.go:65 +0xc9
+v2ray.com/core/proxy/vmess/outbound.New(0xe3df40, 0xc000152090, 0xc0000810c0, 0x3, 0x1397da0, 0xc000093c10)
+	v2ray.com/core/proxy/vmess/outbound/outbound.go:39 +0x137
+v2ray.com/core/proxy/vmess/outbound.init.2.func1(0xe3df40, 0xc000152090, 0xca4c40, 0xc0000810c0, 0xe3c301, 0xc0000f9968, 0x55eb3a, 0xc0000423c0)
+	v2ray.com/core/proxy/vmess/outbound/outbound.go:184 +0x54
+v2ray.com/core/common.CreateObject(0xe3df40, 0xc000152090, 0xca4c40, 0xc0000810c0, 0x0, 0xc000045ec0, 0xc0000f9a30, 0x203000)
+	v2ray.com/core/common/type.go:32 +0x258
+v2ray.com/core/app/proxyman/outbound.NewHandler(0xe3df40, 0xc000152090, 0xc000077260, 0x8e0000c000152090, 0x0, 0x1397da0, 0xc0000938d0)
+	v2ray.com/core/app/proxyman/outbound/handler.go:61 +0x172
+v2ray.com/core/app/proxyman/outbound.init.0.func2(0xe3df40, 0xc000152090, 0xcc01c0, 0xc000077260, 0xc0000f9a01, 0x40c658, 0x30, 0xc96080)
+	v2ray.com/core/app/proxyman/outbound/outbound.go:168 +0x54
+v2ray.com/core/common.CreateObject(0xe3df40, 0xc000152090, 0xcc01c0, 0xc000077260, 0xc60a40, 0xc000080800, 0xe3df40, 0xc000152090)
+	v2ray.com/core/common/type.go:32 +0x258
+v2ray.com/core.CreateObject(0xc000080800, 0xcc01c0, 0xc000077260, 0x7f3db2ecd530, 0xc0000993b0, 0x0, 0x0)
+	v2ray.com/core/functions.go:21 +0x5b
+v2ray.com/core.AddOutboundHandler(0xc000080800, 0xc000077260, 0x0, 0x0)
+	v2ray.com/core/v2ray.go:125 +0xa0
+v2ray.com/core.addOutboundHandlers(0xc000080800, 0xc000045d50, 0x2, 0x2, 0x0, 0x0)
+	v2ray.com/core/v2ray.go:141 +0x55
+v2ray.com/core.New(0xc0000ee630, 0x4, 0x7fff13b702f8, 0x33)
+	v2ray.com/core/v2ray.go:211 +0x4c9
+main.startV2Ray(0x0, 0x0, 0x0, 0x0)
+	v2ray.com/core/main/main.go:74 +0x4eb
+main.main()
+	v2ray.com/core/main/main.go:98 +0xa3
