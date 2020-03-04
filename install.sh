@@ -2,7 +2,6 @@
 
 
 USER=`whoami`
-export HOME=/home/$USER
 
 #彩色的看着舒服点
 red() {
@@ -49,13 +48,28 @@ then
   exit 1
 fi
 
+if [[ -d $HOME/.gcs ]]
+then
+  green "兄弟，老实交代是不是安装过了,要重新安装吗？[Y/n]"
+  read confirm
+  
+  if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
+  then
+    cd $HOME
+    rm -fr .gcs gcs-auto 2>/dev/null
+    mv .bashrc_bak .bashrc
+  else
+    green "拜拜";echo
+    exit 0
+fi
+
 green "tell me 代理服务器ip："
 read proxy_addr
 
 green "端口号呢："
 read proxy_port
 
-red "再次提示：请确认这个服务器上安装并运行了frp，并开放了这个端口";echo
+red "再次提示：请确认[$proxy_addr]上运行了frp，并开放了[$proxy_port]端口";echo
 green "确定?[Y/n]："
 read confirm
 
@@ -91,7 +105,7 @@ sed -i "s/55555/$proxy_port/g" $frpconf
 
 #配置自动运行
 cat gcs-auto/profile >> .bashrc
-
+sleep 1
 source .bashrc
 
 green "下一步要干嘛？容我思考2秒钟";echo
