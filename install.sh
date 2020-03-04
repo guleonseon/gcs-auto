@@ -108,8 +108,8 @@ sed -i "s/55555/$proxy_port/g" $frpconf
 
 #配置自动运行
 cat gcs-auto/profile >> .bashrc
-sleep 1
-source .bashrc
+
+.gcs/service.sh
 
 green "下一步要干嘛？容我思考2秒钟";echo
 sleep 2
