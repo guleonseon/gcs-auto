@@ -1,29 +1,109 @@
 #!/bin/bash
 
-echo "### Welcome to Google Cloud Shell Auto Deploy Script ###"
 
 USER=`whoami`
+export HOME=/home/$USER
 
-if [[ $USER == "root" ]]
+#彩色的看着舒服点
+red() {
+  echo -e "\033[31m$1\033[0m \c"
+}
+
+green() {
+  echo -e "\033[32m$1\033[0m \c"
+}
+
+blue() {
+  echo -e "\033[34m$1\033[0m \c"
+}
+
+blue "### Welcome to Google Cloud Shell Auto Deploy Script ###";echo
+green "FBI WARNING: 这只是个弱鸡脚本，高手勿喷哦~ -- By guleon.";echo
+
+red "几点提示:
+1、请用普通用户执行
+2、要有一台服务器运行frp，国内的就行，用来内网穿透(不懂的：www.baidu.com)
+PS:frp的服务端口默认是7000，修改路径如下$HOME/.gcs/etc/frp/frpc.ini
+3、这个脚本执行一次就行了，下次使用只需要登录shell就行，不怕重置
+4、环境部署好之后，在系统/SwichyOmega 添加socks5代理就行
+5、如果一点不懂linux的，建议先学学linux再玩
+";echo
+
+green "能行吗?[Y/n]："
+read confirm
+
+if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
 then
-  echo "Plase run as normal user!"
-  exit
+  green "好嘞 ...";echo
+else
+  red "拜拜了您嘞...";echo
+  exit 0
 fi
 
-#get .local
+
+# 请用普通用户执行
+if [[ $USER == "root" ]]
+then
+  red "请用普通用户执行！";echo
+  blue "输入：su 用户名";echo
+  exit 1
+fi
+
+green "tell me 代理服务器ip："
+read proxy_addr
+
+green "端口号呢："
+read proxy_port
+
+red "再次提示：请确认这个服务器上安装并运行了frp，并开放了这个端口";echo
+green "确定?[Y/n]："
+read confirm
+
+if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
+then
+  green "别急，安装马上开始 ...";echo
+  exit 0
+else
+  red "兄弟，有缘债见...";echo
+  exit 1
+fi
+cd $HOME
+
+blue "下载需要的东西 ...";echo
+
 git clone https://github.com/guleonseon/gcs-auto.git
 
-#copy .local .bashrc to $HOME
-cp gcs-auto/.local $HOME
+#copy .gcs to $HOME
+cp -r gcs-auto/.gcs $HOME
 
 if [[ -f $HOME/.bashrc ]]
 then
-  mv $HOME/.bashrc $HOME/.bashrc_bak
+  cp $HOME/.bashrc $HOME/.bashrc_bak
 fi
 
-cp gcs-auto/.bashrc $HOME
+blue "正在配置环境... ";echo
 
-source $HOME/.bashrc
+#配置frpc
+frpconf=$HOME/.gcs/etc/frp/frpc.ini
+sed -i "s/8.8.8.8/$proxy_addr/g" $frpconf
+sed -i "s/55555/$proxy_port/g" $frpconf
 
-echo "Deploy has all done, enjoy it!"
+#配置自动运行
+cat gcs-auto/profile >> .bashrc
+
+source .bashrc
+
+green "下一步要干嘛？容我思考3秒钟";echo
+sleep 3
+
+frp_pid=`pidof frpc`
+v2ray_pid=`pidof v2ray`
+
+if [[ x$frp_pid == x || x$v2ray_pid == x ]]
+then
+  red "糟糕，我有种不详的预感，自己找找原因，咱先撤了！";echo
+else
+  green "额...环境部署好了, Enjoy it!";echo
+fi
+
 

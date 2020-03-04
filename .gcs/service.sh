@@ -4,7 +4,7 @@
 ###		This is a services script		###
 ###########################################################
 
-LOCAL=$HOME/.local
+LOCAL=$HOME/.gcs
 
 #frpc service
 frpClient() {
