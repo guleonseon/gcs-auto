@@ -31,5 +31,5 @@
 #### 4、愉快的科学上网
 在系统代理或者chrome的[SwithyOmega](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif)配置你的代理服务器和端口，注意选择`socks5`
 
-#### 结束，撒花
+#### 结束，撒花，好用的话给个 Star 哦~
 
