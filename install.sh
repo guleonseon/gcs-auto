@@ -63,6 +63,7 @@ then
   else
     green "拜拜";echo
     exit 0
+  fi
 fi
 
 green "tell me 代理服务器ip："
