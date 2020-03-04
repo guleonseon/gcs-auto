@@ -56,6 +56,8 @@ then
   if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
   then
     cd $HOME
+    kill -9 `pidof v2ray` 2>/dev/null
+    kill -9 `pidof frpc` 2>/dev/null
     rm -fr .gcs gcs-auto 2>/dev/null
     mv .bashrc_bak .bashrc
   else
