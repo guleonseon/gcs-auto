@@ -62,7 +62,6 @@ read confirm
 if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
 then
   green "别急，安装马上开始 ...";echo
-  exit 0
 else
   red "兄弟，有缘债见...";echo
   exit 1
