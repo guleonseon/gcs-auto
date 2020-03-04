@@ -16,7 +16,7 @@
 ### 2、执行以下代码
 `bash <(curl -s -L https://raw.githubusercontent.com/guleonseon/gcs-auto/master/install.sh)`
 
-#### PS:如果脚本执行提示成功，可跳至步骤
+#### PS:如果脚本执行提示成功，可跳至步骤4
 
 ### 3、[optional]修改自定义配置文件
 `cd $HOME/.gcs/etc`
