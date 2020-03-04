@@ -72,15 +72,17 @@ blue "下载需要的东西 ...";echo
 
 git clone https://github.com/guleonseon/gcs-auto.git
 
-#copy .gcs to $HOME
-cp -r gcs-auto/.gcs $HOME
+sleep 2
+
+blue "正在配置环境... ";echo
 
 if [[ -f $HOME/.bashrc ]]
 then
   cp $HOME/.bashrc $HOME/.bashrc_bak
 fi
 
-blue "正在配置环境... ";echo
+#copy .gcs to $HOME
+cp -r gcs-auto/.gcs $HOME
 
 #配置frpc
 frpconf=$HOME/.gcs/etc/frp/frpc.ini
@@ -92,8 +94,8 @@ cat gcs-auto/profile >> .bashrc
 
 source .bashrc
 
-green "下一步要干嘛？容我思考3秒钟";echo
-sleep 3
+green "下一步要干嘛？容我思考2秒钟";echo
+sleep 2
 
 frp_pid=`pidof frpc`
 v2ray_pid=`pidof v2ray`
