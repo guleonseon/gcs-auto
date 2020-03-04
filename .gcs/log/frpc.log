@@ -1,3 +1,0 @@
-2020/03/03 14:14:00 [1;34m[I] [service.go:250] [919d4137d2c12e15] login to server success, get run id [919d4137d2c12e15], server udp port [0][0m
-2020/03/03 14:14:00 [1;34m[I] [proxy_manager.go:144] [919d4137d2c12e15] proxy added: [v2ray][0m
-2020/03/03 14:14:00 [1;34m[I] [control.go:164] [919d4137d2c12e15] [v2ray] start proxy success[0m
