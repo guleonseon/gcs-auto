@@ -20,9 +20,12 @@
 
 ### 3、[optional]修改自定义配置文件
 `cd $HOME/.gcs/etc`
+
 修改中...emmmm...
+
 修改完成！(假装...)
-#### 注意: `v2ray-server.ini`里的`port`要和`frpc.ini`里的`local_port`一致
+
+#### 注意: `v2ray-server.json`里的`port`要和`frpc.ini`里的`local_port`一致
 #### `frpc.ini`里的`server_port`要和你代理服务器上的frp的端口保持一致
 
 #### 4、愉快的科学上网
