@@ -28,8 +28,10 @@ if [[ x$frp_pid != x && x$v2ray_pid != x ]]
 then
   echo "Service Ready!"
 elif [[ x$frp_pid == x ]]
+then
   echo "兄弟，frp有问题"
 elif [[ x$v2ray_pid == x ]]
+then
   echo "兄弟，v2ray有问题"
 fi
 
