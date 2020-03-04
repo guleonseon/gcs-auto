@@ -6,6 +6,11 @@
 
 LOCAL=$HOME/.gcs
 
+if [[ ! -d $LOCAL/log ]]
+then
+  mkdir $LOCAL/log
+fi
+
 #frpc service
 frpClient() {
 LOG=$LOCAL/log/frpc.log
